@@ -36,7 +36,7 @@ def browser(request):
     options_firefox.set_preference("intl.accept_languages", user_language)
 
     # options_edge = OptionsEdge()
-    # options_edge.set_preference("intl.accept_languages", user_language)
+    # options_edge.set_preference2("intl.accept_languages", user_language)
 
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
@@ -46,12 +46,13 @@ def browser(request):
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
         driver = webdriver.Firefox(service=Service(GeckoDriverManager().install()), options=options_firefox)
-
+        driver.maximize_window()
+        driver.implicitly_wait(5)
     # elif browser_name == 'edge':
     #     print("\nstart firefox browser for test..")
-    #     driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()), options=options_edge)
-    #     # driver.maximize_window()
-    #     # driver.implicitly_wait(5)
+    #     driver = webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
+        # driver.maximize_window()
+        # driver.implicitly_wait(5
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield driver
