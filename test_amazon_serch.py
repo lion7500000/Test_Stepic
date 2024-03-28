@@ -18,8 +18,8 @@ def test_search_fild(browser):
     browser.get(amazon_base)
     browser.find_element(*AMAZON_SEARCH_FILD).send_keys(INPUT_TEXT)
     search_btn = WebDriverWait(browser, 5).until(EC.element_to_be_clickable(SUBMIT_BTN))
-    search_btn.click()
-    actual_text = WebDriverWait(browser, 5).until(EC.element_to_be_clickable(SEARCH_TEXT)).text
+    search_btn.click()gi
+    actual_text = WebDriverWait(browser, 5).until(EC.element_to_be_clickable(SEARCH_TEXT)).
     assert INPUT_TEXT in actual_text, f"expected text {INPUT_TEXT}, bot got {actual_text}"
     item = browser.find_elements(*SEARCH_RESULTS)[4]
     item_text = item.text
